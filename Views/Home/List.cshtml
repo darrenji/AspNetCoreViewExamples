@@ -8,11 +8,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Razor</title>
         <link href="~/lib/boostrap/dist/css/bootstrap.css" rel="stylesheet" />
+        <script id="jsonData" type="application/json">
+            @Json.Serialize(new string[] { "Apple", "Orange", "Pear"})
+        </script>
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+
+                var list = $("#list");
+                JSON.parse($("#jsonData").text()).forEach(function (val) {
+
+                    console.log("val: " + val);
+                    list.append($("<li>").text(val));
+                });
+            });
+        </script>
     </head>
     <body class="panel-body">
         This is the List View
         @Html.Partial("MyPartial")
 
         @Html.Partial("MyStrongTypePartial", new string[] { "Apple", "Orange", "Pear"})
+
+        <ul id="list"></ul>
     </body>
 </html>

@@ -29,6 +29,7 @@ namespace AspNetCoreViewsExamples
             //设置IViewLocationExpander
             services.Configure<RazorViewEngineOptions>(options => {
                 options.ViewLocationExpanders.Add(new SimpleExpander());
+                options.ViewLocationExpanders.Add(new ColorExpander());
             });
         }
 

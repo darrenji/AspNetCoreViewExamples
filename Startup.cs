@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Mvc;
 using AspNetCoreViewsExamples.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Razor;
 
 namespace AspNetCoreViewsExamples
 {
@@ -23,6 +24,11 @@ namespace AspNetCoreViewsExamples
             //设置自定义的IViewEngine
             services.Configure<MvcViewOptions>(options => {
                 options.ViewEngines.Insert(0, new DebugDataViewEngine());
+            });
+
+            //设置IViewLocationExpander
+            services.Configure<RazorViewEngineOptions>(options => {
+                options.ViewLocationExpanders.Add(new SimpleExpander());
             });
         }
 

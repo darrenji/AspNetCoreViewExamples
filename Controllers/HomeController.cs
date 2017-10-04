@@ -20,7 +20,7 @@ namespace AspNetCoreViewsExamples.Controllers
 
         public ViewResult Index()
         {
-            return View(new string[] { "Apple", "Orange", "Pear"});
+            return View("MyView", new string[] { "Apple", "Orange", "Pear"});
         }
 
         public ViewResult List() => View();
